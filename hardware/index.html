@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cao Trung Kiên's Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --text: #1a1a18;
+      --text-secondary: #6b6b67;
+      --text-tertiary: #a8a8a3;
+      --border: rgba(0,0,0,0.10);
+      --border-hover: rgba(0,0,0,0.22);
+      --accent-bg: #e8f0fe;
+      --accent-text: #1a56db;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141413;
+        --bg-secondary: #1f1f1d;
+        --text: #f0efea;
+        --text-secondary: #9d9d98;
+        --text-tertiary: #5c5c59;
+        --border: rgba(255,255,255,0.10);
+        --border-hover: rgba(255,255,255,0.22);
+        --accent-bg: #1a2e52;
+        --accent-text: #7aa8f5;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 15px; font-weight: 500; text-decoration: none; color: var(--text); }
+    .nav { display: flex; align-items: center; gap: 24px; }
+    .nav a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 14px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 7px 16px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── Wrapper ── */
+    .wrapper { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Hero ── */
+    .hero { padding: 80px 0 64px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px;
+      color: var(--accent-text);
+      background: var(--accent-bg);
+      padding: 4px 13px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-tag .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent-text);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1.18;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 .muted { color: var(--text-secondary); }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 14px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 9px 20px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.82; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 14px;
+      color: var(--text);
+      padding: 9px 20px;
+      border-radius: var(--radius-md);
+      border: 0.5px solid var(--border-hover);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: var(--bg-secondary); }
+
+    /* ── Section base ── */
+    .section {
+      padding: 56px 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 28px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .skill-card .skill-icon {
+      font-size: 22px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .skill-card .skill-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .skill-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .skill-tag {
+      font-size: 11px;
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Projects ── */
+    .projects-list { display: flex; flex-direction: column; gap: 14px; }
+    .project-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: var(--border-hover); }
+    .project-info { flex: 1; min-width: 0; }
+    .project-name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .project-stack { display: flex; gap: 6px; flex-wrap: wrap; }
+    .stack-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+    }
+    .project-arrow {
+      font-size: 20px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: color 0.15s;
+    }
+    .project-card:hover .project-arrow { color: var(--text); }
+
+    /* ── Experience ── */
+    .exp-list { display: flex; flex-direction: column; gap: 28px; }
+    .exp-item { display: flex; gap: 24px; }
+    .exp-period {
+      flex-shrink: 0;
+      width: 96px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+    .exp-right {
+      flex: 1;
+      border-left: 0.5px solid var(--border);
+      padding-left: 24px;
+    }
+    .exp-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+    .exp-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── Contact ── */
+    .contact-section {
+      padding: 64px 0 80px;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .contact-section p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+    .social-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 14px;
+      padding: 9px 18px;
+      border: 0.5px solid var(--border-hover);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .social-btn:hover { background: var(--bg-secondary); }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 0.5px solid var(--border);
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .site-header { padding: 14px 20px; }
+      .nav a:not(.nav-cta) { display: none; }
+      .wrapper { padding: 0 20px; }
+      .hero { padding: 48px 0 40px; }
+      .hero h1 { font-size: 30px; }
+      .section { padding: 40px 0; }
+      .exp-item { flex-direction: column; gap: 4px; }
+      .exp-period { width: auto; }
+      .exp-right { border-left: none; padding-left: 0; border-top: 0.5px solid var(--border); padding-top: 12px; }
+      .site-footer { padding: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <a href="#" class="logo">Cao Trung Kiên</a>
+  <nav class="nav">
+    <a href="#ky-nang">Kỹ năng</a>
+    <a href="#du-an">Dự án</a>
+    <a href="#kinh-nghiem">Kinh nghiệm</a>
+    <a href="#lien-he" class="nav-cta">Liên hệ</a>
+  </nav>
+</header>
+
+<div class="wrapper">
+
+  <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Đang mở cho cơ hội mới
+    </div>
+    <h1>Xin chào, tôi là<br><span class="muted">Cao Trung Kiên</span> 👋</h1>
+    <p>Tôi đam mê phần cứng máy tính, kéo dài thời gian sử dụng của máy.</p>
+    <div class="hero-actions">
+      <a href="https://vietcv.io/cvs/542009/portfolio" class="btn-primary">
+        <i class="ti ti-download" aria-hidden="true"></i> Tải CV
+      </a>
+      <a href="#lien-he" class="btn-secondary">
+        <i class="ti ti-mail" aria-hidden="true"></i> Liên hệ tôi
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ KỸ NĂNG ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="ky-nang">
+    <p class="section-label">Kỹ năng</p>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-settings" aria-hidden="true"></i></div>
+        <div class="skill-name">Cài đặt hệ điều hành</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Windows</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">macOS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-tool" aria-hidden="true"></i></div>
+        <div class="skill-name">Cài đặt ứng dụng</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LibreOffice/WPS Office</span>
+          <span class="skill-tag">GIMP</span>
+          <span class="skill-tag">Capcut</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-device-desktop" aria-hidden="true"></i></div>
+        <div class="skill-name">Sửa chữa máy tính/laptop</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Kiểm tra Sức khỏe ổ cứng</span>
+          <span class="skill-tag">Thay thế/Nâng cấp RAM</span>
+          <span class="skill-tag">Kiểm tra/Thay thế linh kiện</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-message-2" aria-hidden="true"></i></div>
+        <div class="skill-name">Tư vấn kỹ thuật</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Mua PC/Laptop</span>
+          <span class="skill-tag">Tư vấn linh kiện phù hợp</span>
+          <span class="skill-tag">Tư vấn cài Linux</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ DỰ ÁN ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="du-an">
+    <p class="section-label">Dự án nổi bật</p>
+    <div class="projects-list">
+
+      <a href="#" class="project-card">
+        <div class="project-info">
+          <div class="project-name">Cài đặt Arch Linux</div>
+          <div class="project-desc">Khám phá Linux, học cach cài đặt và cấu hình Arch Linux trên máy tính cá nhân.</div>
+          <div class="project-stack">
+            <span class="stack-badge">Arch</span>
+            <span class="stack-badge">Hyprland</span>
+            <span class="stack-badge">KDE Plasma</span>
+          </div>
+        </div>
+        <span class="project-arrow"><i class="ti ti-external-link" aria-hidden="true"></i></span>
+      </a>
+
+      <a href="#" class="project-card">
+        <div class="project-info">
+          <div class="project-name">Cài đặt Windows</div>
+          <div class="project-desc">Tìm hiểu sâu hơn về Windows, các ứng dụng và cách cài đặt các phiên bản khác nhau.</div>
+          <div class="project-stack">
+            <span class="stack-badge">Windows</span>
+            <span class="stack-badge">Adobe</span>
+            <span class="stack-badge">Steam</span>
+          </div>
+        </div>
+        <span class="project-arrow"><i class="ti ti-external-link" aria-hidden="true"></i></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══ KINH NGHIỆM ════════════════════════════════════════════════════════ -->
+  <section class="section" id="kinh-nghiem">
+    <p class="section-label">Kinh nghiệm</p>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-period">10/2025 — 4/2026</div>
+        <div class="exp-right">
+          <div class="exp-title">Học viên Kỹ thuật Máy tính</div>
+          <div class="exp-company">Trường Thịnh · Full-time</div>
+          <div class="exp-desc">Học thêm kinh nghiệm làm việc, tham gia sửa chữa thực tế.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2021 — nay</div>
+        <div class="exp-right">
+          <div class="exp-title">Sửa chữa máy tính tại nhà</div>
+          <div class="exp-company">Freelance · Part-time</div>
+          <div class="exp-desc">Tham gia việc sửa chữa và tư vấn cho họ hàng và hàng xóm.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ LIÊN HỆ ════════════════════════════════════════════════════════════ -->
+  <section class="contact-section" id="lien-he">
+    <h2>Liên hệ với tôi</h2>
+    <p>Bạn có dự án thú vị? Hãy nói chuyện với tôi nhé.</p>
+    <div class="social-links">
+      <a href="mailto:caotrungkien19082003" class="social-btn">
+        <i class="ti ti-mail" aria-hidden="true"></i> Email
+      </a>
+      <a href="https://github.com/CaoTrungKien19082003" class="social-btn">
+        <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
+      </a>
+      <a href="https://linkedin.com/in/username" class="social-btn">
+        <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+      <a href="https://facebook.com/cao.trungkien.568/" class="social-btn">
+        <i class="ti ti-brand-facebook" aria-hidden="true"></i> Facebook
+      </a>
+      <a href="https://twitter.com/username" class="social-btn">
+        <i class="ti ti-brand-twitter" aria-hidden="true"></i> Twitter
+      </a>
+    </div>
+  </section>
+
+</div><!-- /wrapper -->
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  © 2026 Cao Trung Kiên
+</footer>
+
+</body>
+</html>
